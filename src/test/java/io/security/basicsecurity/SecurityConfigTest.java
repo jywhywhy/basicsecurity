@@ -13,7 +13,7 @@ public class SecurityConfigTest {
 
     @Test
     void getFilter() {
-        ApplicationContext ac = new AnnotationConfigApplicationContext(EnableWebSecurity.class);
+        ApplicationContext ac = new AnnotationConfigApplicationContext(SecurityConfigV9.class);
 
         SecurityFilterChain securityFilterChain = ac.getBean(SecurityFilterChain.class);
         for (Filter filter : securityFilterChain.getFilters()) {

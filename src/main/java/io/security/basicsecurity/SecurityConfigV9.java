@@ -1,14 +1,14 @@
 package io.security.basicsecurity;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
-@EnableWebSecurity
-@Configuration
+import static org.springframework.security.config.Customizer.withDefaults;
+
+//@EnableWebSecurity
+//@Configuration
 public class SecurityConfigV9 {
 
     @Bean
@@ -18,8 +18,9 @@ public class SecurityConfigV9 {
                 .authorizeHttpRequests(authorize -> authorize
                         .anyRequest().permitAll()
                 )
-                .formLogin(login -> login
-                        .permitAll())
+                .formLogin(
+                        withDefaults()
+                )
                 .csrf(csrf -> csrf
                         .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                 )
