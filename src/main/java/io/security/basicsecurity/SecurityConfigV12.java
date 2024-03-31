@@ -9,9 +9,9 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
-//@EnableWebSecurity
-//@Configuration
-public class SecurityConfigV11 {
+@EnableWebSecurity
+@Configuration
+public class SecurityConfigV12 {
 
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -24,8 +24,6 @@ public class SecurityConfigV11 {
                         withDefaults()
                 )
         ;
-
-        SecurityContextHolder.setStrategyName(SecurityContextHolder.MODE_INHERITABLETHREADLOCAL);
 
         return http.build();
     }
