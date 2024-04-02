@@ -8,14 +8,15 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 //@EnableWebSecurity
 //@Configuration
-public class SecurityConfigV12 {
+public class SecurityConfigV13 {
 
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http
                 .authorizeHttpRequests(authorize -> authorize
-                        .anyRequest().authenticated()
+                        .requestMatchers("/user").hasRole("USER")
+                        .anyRequest().permitAll()
                 )
                 .formLogin(
                         withDefaults()
